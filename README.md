@@ -68,45 +68,73 @@ ou
 
 # Endpoints de Users
 
-## Criar Usuário
-
 - **POST** `/users/`
-  - Cria um novo usuário.
+
+  - **Descrição**: Cria um novo usuário.
   - **Request Body**: JSON contendo os detalhes do usuário.
 
-## Atualizar Usuário
-
 - **PUT** `/users/`
-  - Atualiza as informações do usuário autenticado.
-  - **Requer Autenticação**: Sim (JWT).
-  - **Request Body**: JSON contendo os detalhes a serem atualizados.
 
-## Deletar Usuário
+  - **Descrição**: Atualiza as informações do usuário autenticado.
+  - **Request Body**: JSON contendo os detalhes a serem atualizados.
+  - **Requer Autenticação**
 
 - **DELETE** `/users/`
-  - Deleta o usuário autenticado.
-  - **Requer Autenticação**
 
-## Validar Usuário
+  - **Descrição**: Deleta o usuário autenticado.
+  - **Requer Autenticação**
 
 - **GET** `/users/validate`
-  - Retorna a validação do usuário autenticado.
+  - **Descrição**: Retorna a validação do usuário autenticado.
   - **Requer Autenticação**
-
-## Middleware
-
-- `ensureAuthenticated`: Middleware usado para garantir que o usuário esteja autenticado para acessar certos endpoints.
 
 # Endpoints de Sessions
 
-## Realizar Login
-
 - **POST /sessions**
-  - **Descrição**: Cria uma nova sessão.
-  - **Controlador**: `SessionsController.create`
 
-## Realizar logout
+  - **Descrição**: Cria uma nova sessão.
 
 - **DELETE /sessions**
   - **Descrição**: Encerra a sessão atual.
-  - **Controlador**: `SessionsController.delete`
+
+### Sales Endpoints
+
+- **GET /sales**
+
+  - **Descrição**: Retorna uma lista de todas as vendas.
+  - **Requer Autenticação**
+
+- **GET /sales/:id**
+  - **Descrição**: Retorna os detalhes de uma venda específica pelo ID.
+  - **Requer Autenticação**
+
+### Products Endpoints
+
+- **GET /products**
+
+  - **Descrição**: Retorna uma lista de todos os produtos.
+  - **Requer Autenticação**
+
+- **GET /products/:id**
+
+  - **Descrição**: Retorna os detalhes de um produto específico pelo ID.
+  - **Requer Autenticação**
+
+- **POST /products**
+
+  - **Descrição**: Cria um novo produto.
+  - **Requer Autenticação**
+
+- **PUT /products/:id**
+
+  - **Descrição**: Atualiza um produto existente pelo ID.
+  - **Requer Autenticação**
+
+- **DELETE /products/:id**
+
+  - **Descrição**: Remove um produto existente pelo ID.
+  - **Requer Autenticação**
+
+- **PATCH /products/:id/image**
+  - **Descrição**: Atualiza a imagem de um produto específico pelo ID.
+  - **Requer Autenticação**
