@@ -68,8 +68,6 @@ ou
 
 # Endpoints de Users
 
-Aqui estão os endpoints disponíveis para gerenciar os usuários na Food Explorer API.
-
 ## Criar Usuário
 
 - **POST** `/users/`
@@ -98,3 +96,17 @@ Aqui estão os endpoints disponíveis para gerenciar os usuários na Food Explor
 ## Middleware
 
 - `ensureAuthenticated`: Middleware usado para garantir que o usuário esteja autenticado para acessar certos endpoints.
+
+# Endpoints de Sessions
+
+## Realizar Login
+
+- **POST /sessions**
+  - **Descrição**: Cria uma nova sessão.
+  - **Controlador**: `SessionsController.create`
+
+## Realizar logout
+
+- **DELETE /sessions**
+  - **Descrição**: Encerra a sessão atual.
+  - **Controlador**: `SessionsController.delete`
