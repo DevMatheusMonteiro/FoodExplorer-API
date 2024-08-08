@@ -22,7 +22,7 @@ Bem-vindo ao **Food Explorer API**, a API backend para um aplicativo de restaura
 1. Clone o repositório:
 
    ```bash
-    git clone https://github.com/seu-usuario/food-explorer-api.git
+    git clone https://github.com/DevMatheusMonteiro/FoodExplorer-API.git
    ```
 
 2. Navegue até o diretório do projeto:
