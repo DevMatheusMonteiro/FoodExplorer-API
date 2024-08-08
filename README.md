@@ -65,3 +65,36 @@ ou
 - `npm start`: Inicia a aplicação em modo de produção.
 - `npm run dev`: Inicia a aplicação em modo de desenvolvimento com recarregamento automático
 - `npm run migrate`: Executa as migrações pendentes.
+
+# Endpoints de Users
+
+Aqui estão os endpoints disponíveis para gerenciar os usuários na Food Explorer API.
+
+## Criar Usuário
+
+- **POST** `/users/`
+  - Cria um novo usuário.
+  - **Request Body**: JSON contendo os detalhes do usuário.
+
+## Atualizar Usuário
+
+- **PUT** `/users/`
+  - Atualiza as informações do usuário autenticado.
+  - **Requer Autenticação**: Sim (JWT).
+  - **Request Body**: JSON contendo os detalhes a serem atualizados.
+
+## Deletar Usuário
+
+- **DELETE** `/users/`
+  - Deleta o usuário autenticado.
+  - **Requer Autenticação**
+
+## Validar Usuário
+
+- **GET** `/users/validate`
+  - Retorna a validação do usuário autenticado.
+  - **Requer Autenticação**
+
+## Middleware
+
+- `ensureAuthenticated`: Middleware usado para garantir que o usuário esteja autenticado para acessar certos endpoints.
