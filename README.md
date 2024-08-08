@@ -66,7 +66,9 @@ ou
 - `npm run dev`: Inicia a aplicação em modo de desenvolvimento com recarregamento automático
 - `npm run migrate`: Executa as migrações pendentes.
 
-# Endpoints de Users
+# Endpoints
+
+## Users Endpoints
 
 - **POST** `/users/`
 
@@ -88,7 +90,7 @@ ou
   - **Descrição**: Retorna a validação do usuário autenticado.
   - **Requer Autenticação**
 
-# Endpoints de Sessions
+## Sessions Endpoints
 
 - **POST /sessions**
 
@@ -97,44 +99,190 @@ ou
 - **DELETE /sessions**
   - **Descrição**: Encerra a sessão atual.
 
-### Sales Endpoints
+## Sales Endpoints
 
 - **GET /sales**
 
   - **Descrição**: Retorna uma lista de todas as vendas.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 - **GET /sales/:id**
   - **Descrição**: Retorna os detalhes de uma venda específica pelo ID.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-### Products Endpoints
+## Products Endpoints
 
 - **GET /products**
 
   - **Descrição**: Retorna uma lista de todos os produtos.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 - **GET /products/:id**
 
   - **Descrição**: Retorna os detalhes de um produto específico pelo ID.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 - **POST /products**
 
   - **Descrição**: Cria um novo produto.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 - **PUT /products/:id**
 
   - **Descrição**: Atualiza um produto existente pelo ID.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 - **DELETE /products/:id**
 
   - **Descrição**: Remove um produto existente pelo ID.
+  - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 - **PATCH /products/:id/image**
   - **Descrição**: Atualiza a imagem de um produto específico pelo ID.
+  - **Requer Autorização admin ou employee**
+  - **Requer Autenticação**
+
+## Orders Endpoints
+
+- **POST /orders**
+
+  - **Descrição**: Cria um novo pedido.
+  - **Requer Autenticação**
+
+- **GET /orders**
+
+  - **Descrição**: Retorna uma lista de todos os pedidos.
+  - **Requer Autenticação**
+
+- **GET /orders/:id**
+
+  - **Descrição**: Retorna os detalhes de um pedido específico pelo ID.
+  - **Requer Autenticação**
+
+- **PATCH /orders/:id**
+
+  - **Descrição**: Atualiza o status de um pedido específico pelo ID.
+  - **Requer Autenticação**
+
+## Employees Endpoints
+
+- **POST /employees**
+
+  - **Descrição**: Cria um novo funcionário.
+  - **Requer Autorização admin**
+  - **Requer Autenticação**
+
+- **GET /employees**
+
+  - **Descrição**: Retorna uma lista de todos os funcionários.
+  - **Requer Autorização admin**
+  - **Requer Autenticação**
+
+- **GET /employees/:id**
+
+  - **Descrição**: Retorna os detalhes de um funcionário específico pelo ID.
+  - **Requer Autorização admin**
+  - **Requer Autenticação**
+
+- **PUT /employees/:id**
+
+  - **Descrição**: Atualiza um funcionário existente pelo ID.
+  - **Requer Autorização admin**
+  - **Requer Autenticação**
+
+- **DELETE /employees/:id**
+  - **Descrição**: Remove um funcionário existente pelo ID.
+  - **Requer Autorização admin**
+  - **Requer Autenticação**
+
+## Addresses Endpoints
+
+- **POST /addresses**
+
+  - **Descrição**: Cria um novo endereço.
+  - **Requer Autenticação**
+
+- **GET /addresses**
+
+  - **Descrição**: Retorna uma lista de todos os endereços.
+  - **Requer Autenticação**
+
+- **GET /addresses/:id**
+
+  - **Descrição**: Retorna os detalhes de um endereço específico pelo ID.
+  - **Requer Autenticação**
+
+- **PUT /addresses/:id**
+
+  - **Descrição**: Atualiza um endereço existente pelo ID.
+  - **Requer Autenticação**
+
+- **DELETE /addresses/:id**
+
+  - **Descrição**: Remove um endereço existente pelo ID.
+  - **Requer Autenticação**
+
+- **PATCH /addresses/:id**
+  - **Descrição**: Atualiza o status de seleção de um endereço específico pelo ID.
+  - **Requer Autenticação**
+
+## Cards Endpoints
+
+- **POST /cards**
+
+  - **Descrição**: Cria um novo cartão.
+  - **Requer Autenticação**
+
+- **GET /cards**
+
+  - **Descrição**: Retorna uma lista de todos os cartões.
+  - **Requer Autenticação**
+
+- **GET /cards/:id**
+
+  - **Descrição**: Retorna os detalhes de um cartão específico pelo ID.
+  - **Requer Autenticação**
+
+- **PUT /cards/:id**
+
+  - **Descrição**: Atualiza um cartão existente pelo ID.
+  - **Requer Autenticação**
+
+- **DELETE /cards/:id**
+  - **Descrição**: Remove um cartão existente pelo ID.
+  - **Requer Autenticação**
+
+## Categories Endpoints
+
+- **GET /categories**
+  - **Descrição**: Retorna uma lista de todas as categorias.
+  - **Requer Autenticação**
+
+## Feedbacks Endpoints
+
+- **POST /feedbacks**
+  - **Descrição**: Cria um novo feedback.
+  - **Requer Autenticação**
+
+## Favorites Endpoints
+
+- **POST /favorites**
+
+  - **Descrição**: Adiciona um item à lista de favoritos.
+  - **Requer Autenticação**
+
+- **GET /favorites**
+
+  - **Descrição**: Retorna a lista de itens favoritos.
+  - **Requer Autenticação**
+
+- **DELETE /favorites/:id**
+  - **Descrição**: Remove um item da lista de favoritos pelo ID.
   - **Requer Autenticação**
