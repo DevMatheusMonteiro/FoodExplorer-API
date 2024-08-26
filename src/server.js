@@ -8,15 +8,7 @@ const { UPLOAD_FOLDER } = require("./configs/upload");
 const cors = require("cors");
 
 const app = express();
-app.use(express.json());
-app.use(
-  cookieParser(process.env.COOKIE_SECRET, {
-    httpOnly: true,
-    sameSite: "none",
-    secure: true,
-    maxAge: 30 * 60 * 1000,
-  })
-);
+app.use(cookieParser());
 
 app.use(
   cors({
@@ -24,7 +16,7 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(express.json());
 app.use("/file", express.static(UPLOAD_FOLDER));
 
 app.use(routes);

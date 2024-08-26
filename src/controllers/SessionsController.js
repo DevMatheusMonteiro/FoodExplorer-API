@@ -6,7 +6,12 @@ class SessionsController {
     const usersRepository = new UsersRepository();
     const sessionsService = new SessionsService(usersRepository);
     const { user, token } = await sessionsService.create({ email, password });
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpsOnly: true,
+      sameSite: "none",
+      secure: true,
+      maxAge: 30 * 60 * 1000,
+    });
     return res.status(200).json(user);
   }
   async delete(req, res) {
