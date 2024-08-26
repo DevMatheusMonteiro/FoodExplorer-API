@@ -30,8 +30,7 @@ class CardsController {
     const { nickname } = req.body;
     const { id } = req.params;
     const user_id = req.user.id;
-    const card = await cardsService.update({ id, user_id, nickname });
-    console.log(card);
+    await cardsService.update({ id, user_id, nickname });
     return res.status(200).json();
   }
   async delete(req, res) {

@@ -26,9 +26,10 @@ class CardsService {
       number.length - 4
     );
     const beforeTheLastFourNumbers = number.substring(0, number.length - 4);
-    const foundByNumber = await this.cardsRepository.findByNumber(
-      lastFourCharactersOfTheNumber
-    );
+    const foundByNumber = await this.cardsRepository.findByNumber({
+      lastFourCharactersOfTheNumber,
+      user_id,
+    });
     if (foundByNumber) {
       throw new AppError("Esse cartão já foi cadastrado!");
     }

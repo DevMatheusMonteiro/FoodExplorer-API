@@ -6,6 +6,10 @@ class ProductsImageService {
     this.productsImageRepository = productsImageRepository;
     this.diskStorage = new DiskStorage();
   }
+  async create(imageFilename) {
+    const filename = await this.diskStorage.saveFile(imageFilename);
+    return filename;
+  }
   async update({ id, imageFilename }) {
     const product = await this.productsImageRepository.findById(id);
     if (!product) {
@@ -16,11 +20,11 @@ class ProductsImageService {
     }
     const filename = await this.diskStorage.saveFile(imageFilename);
     product.image = filename;
-    const product_id = await this.productsImageRepository.update({
+    await this.productsImageRepository.update({
       id,
       image: product.image,
     });
-    return product_id;
+    return product.image;
   }
 }
 module.exports = ProductsImageService;

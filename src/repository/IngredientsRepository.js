@@ -7,8 +7,11 @@ class IngredientsRepository {
     );
     return ingredients;
   }
-  async findByProductId(product_id) {
-    const ingredients = await knex("ingredients").where({ product_id });
+  async findByProductIdList(productIds) {
+    const ingredients = await knex("ingredients").whereIn(
+      "product_id",
+      productIds
+    );
 
     return ingredients;
   }

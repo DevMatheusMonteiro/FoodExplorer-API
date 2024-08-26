@@ -5,6 +5,7 @@ class OrdersService {
   constructor(
     ordersRepository,
     addressesSelectedRepository,
+    addressesRepository,
     productsRepository,
     salesRepository,
     feedbacksRepository
@@ -14,6 +15,7 @@ class OrdersService {
     this.productsRepository = productsRepository;
     this.salesRepository = salesRepository;
     this.feedbacksRepository = feedbacksRepository;
+    this.addressesRepository = addressesRepository;
     this.addressesSelectedService = new AddressesSelectedService(
       addressesSelectedRepository
     );
@@ -108,9 +110,14 @@ class OrdersService {
     const [feedback] = await this.feedbacksRepository.findByOrderIdList([
       order.id,
     ]);
+    const address = await this.addressesRepository.findById({
+      id: order.address_id,
+      user_id,
+    });
     const sales = await this.salesRepository.findByOrderIdList([order.id]);
     return {
       ...order,
+      address,
       rating: feedback?.rating,
       comment: feedback?.comment,
       products: sales,

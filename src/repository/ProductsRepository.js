@@ -65,10 +65,11 @@ class ProductsRepository {
       .count();
     return total["count(*)"];
   }
-  async create({ name, description, price, category_id }) {
+  async create({ name, description, image, price, category_id }) {
     const [product_id] = await knex("products").insert({
       name,
       description,
+      image,
       price,
       category_id,
     });

@@ -4,14 +4,17 @@ const AddressesSelectedRepository = require("../repository/AddressesSelectedRepo
 const SalesRepository = require("../repository/SalesRepository");
 const ProductsRepository = require("../repository/ProductsRepository");
 const FeedbacksRepository = require("../repository/FeedbacksRepository");
+const AddressesRepository = require("../repository/AddressesRepository");
 const ordersRepository = new OrdersRepository();
 const salesRepository = new SalesRepository();
 const productsRepository = new ProductsRepository();
 const addressSelectedRepository = new AddressesSelectedRepository();
 const feedbacksRepository = new FeedbacksRepository();
+const addressesRepository = new AddressesRepository();
 const ordersService = new OrdersService(
   ordersRepository,
   addressSelectedRepository,
+  addressesRepository,
   productsRepository,
   salesRepository,
   feedbacksRepository

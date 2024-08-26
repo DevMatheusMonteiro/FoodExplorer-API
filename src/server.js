@@ -10,7 +10,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(
-  cookieParser("ae7573de0e7fecf88daac906d6134d93", {
+  cookieParser(process.env.COOKIE_SECRET, {
     httpOnly: true,
     sameSite: "none",
     secure: true,

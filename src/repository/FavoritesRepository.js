@@ -6,14 +6,7 @@ class FavoritesRepository {
   }
   async findByUserId(user_id) {
     const favorites = await knex("favorites")
-      .select(
-        "favorites.id",
-        "favorites.product_id",
-        "products.name",
-        "products.description",
-        "products.price",
-        "products.image"
-      )
+      .select("favorites.id", "favorites.product_id", "favorites.user_id")
       .where({ user_id })
       .innerJoin("products", "favorites.product_id", "products.id");
     return favorites;

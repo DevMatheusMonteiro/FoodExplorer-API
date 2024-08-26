@@ -13,7 +13,10 @@ class ProductsService {
       this.ingredientsRepository
     );
   }
-  async create({ name, description, price, category, ingredients }) {
+  async create({ name, description, image, price, category, ingredients }) {
+    if (!name) {
+      throw new AppError("Informe o nome do produto!");
+    }
     const checkProductExists = await this.productsRepository.findByName(name);
     if (checkProductExists) {
       throw new AppError("Este produto já está cadastrado!");
@@ -21,7 +24,7 @@ class ProductsService {
     if (!category) {
       throw new AppError("É necessário informar a categoria do produto!");
     }
-    if (!price) {
+    if (price == null) {
       throw new AppError("É necessário informar o preço do produto!");
     }
     if (ingredients.length <= 0) {
@@ -31,10 +34,11 @@ class ProductsService {
     const product_id = await this.productsRepository.create({
       name,
       description,
+      image,
       price,
       category_id,
     });
-    const ingredients_id = await ingredientsService.create(
+    const ingredients_id = await this.ingredientsService.create(
       ingredients,
       product_id
     );
@@ -68,9 +72,8 @@ class ProductsService {
     let newIngredients_id = [];
     let deletedIngredientsName = [];
     if (ingredients) {
-      const foundByProductId = await this.ingredientsRepository.findByProductId(
-        product.id
-      );
+      const foundByProductId =
+        await this.ingredientsRepository.findByProductIdList([product.id]);
       const nameOfDBIngredients = foundByProductId.map(
         (nameOfIngredient) => nameOfIngredient.name
       );
@@ -142,9 +145,19 @@ class ProductsService {
     } else {
       products = await this.productsRepository.findByNameAndIngredients(search);
     }
+    const productIds = products.map((product) => product.id);
     const categories = await this.categoriesRepository.all();
+    const ingredients = await this.ingredientsRepository.findByProductIdList(
+      productIds
+    );
+    const productsWithIngredients = products.map((product) => {
+      const ingredientProduct = ingredients.filter(
+        (ingredient) => ingredient.product_id == product.id
+      );
+      return { ...product, ingredients: ingredientProduct };
+    });
     const productsByCategory = categories.map((category) => {
-      const productsOfTheCategory = products.filter(
+      const productsOfTheCategory = productsWithIngredients.filter(
         (product) => product.category_id === category.id
       );
       return {
@@ -163,9 +176,9 @@ class ProductsService {
     if (!product) {
       throw new AppError("Produto não encontrado", 404);
     }
-    const ingredients = await this.ingredientsRepository.findByProductId(
-      product.id
-    );
+    const ingredients = await this.ingredientsRepository.findByProductIdList([
+      product.id,
+    ]);
     return {
       ...product,
       ingredients,

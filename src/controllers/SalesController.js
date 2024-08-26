@@ -1,9 +1,15 @@
 const FeedbacksRepository = require("../repository/FeedbacksRepository");
+const AddressesRepository = require("../repository/AddressesRepository");
 const SalesRepository = require("../repository/SalesRepository");
 const SalesService = require("../service/SalesService");
 const salesRepository = new SalesRepository();
 const feedbacksRepository = new FeedbacksRepository();
-const salesService = new SalesService(salesRepository, feedbacksRepository);
+const addressesRepository = new AddressesRepository();
+const salesService = new SalesService(
+  salesRepository,
+  addressesRepository,
+  feedbacksRepository
+);
 class SalesController {
   async index(req, res) {
     const { status, page } = req.query;

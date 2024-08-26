@@ -212,10 +212,8 @@ class AddressesService {
       wordAddress,
       ...generalAddresses,
     ];
-    if (addresses.every((address) => address == null)) {
-      addresses = [];
-    }
-    return addresses;
+    const filteredAddresses = addresses.filter((address) => address != null);
+    return filteredAddresses;
   }
   async show({ id, user_id }) {
     const address = await this.addressesRepository.findById({ id, user_id });

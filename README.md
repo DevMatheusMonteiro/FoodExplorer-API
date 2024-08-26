@@ -10,78 +10,26 @@ Bem-vindo ao **Food Explorer API**, a API backend para um aplicativo de restaura
 - **Knex.js**: SQL query builder para interações com bancos de dados.
 - **SQLite**: Banco de dados relacional leve para armazenar dados da aplicação.
 
-## Instalação
+# Link do projeto
 
-### Pré-requisitos
-
-- [Node.js](https://nodejs.org/) v12 ou superior
-- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
-
-### Passos para Instalar
-
-1. Clone o repositório:
-
-   ```bash
-    git clone https://github.com/DevMatheusMonteiro/FoodExplorer-API.git
-   ```
-
-2. Navegue até o diretório do projeto:
-
-```bash
-    cd FoodExplorer-API
-```
-
-3. Instale as dependências
-
-```bash
-    npm install
-```
-
-ou
-
-```bash
-    yarn install
-```
-
-### Configuração
-
-1. Crie um arquivo `.env` na raiz do projeto
-
-```env
-    PORT=3333
-    JWT_SECRET=sua_chave_secreta_jwt
-```
-
-2. Execute as migrações para configurar o banco de dados:
-
-```bash
-     npm run migrate
-```
-
-### Uso
-
-#### Scripts Disponíveis
-
-- `npm start`: Inicia a aplicação em modo de produção.
-- `npm run dev`: Inicia a aplicação em modo de desenvolvimento com recarregamento automático
-- `npm run migrate`: Executa as migrações pendentes.
+[https://foodexplorer-api-6cw6.onrender.com](https://foodexplorer-api-6cw6.onrender.com)
 
 # Endpoints
 
 ## Users Endpoints
 
-- **POST** `/users/`
+- **POST** `/users`
 
   - **Descrição**: Cria um novo usuário.
   - **Request Body**: JSON contendo os detalhes do usuário.
 
-- **PUT** `/users/`
+- **PUT** `/users`
 
   - **Descrição**: Atualiza as informações do usuário autenticado.
   - **Request Body**: JSON contendo os detalhes a serem atualizados.
   - **Requer Autenticação**
 
-- **DELETE** `/users/`
+- **DELETE** `/users`
 
   - **Descrição**: Deleta o usuário autenticado.
   - **Requer Autenticação**
@@ -92,197 +40,211 @@ ou
 
 ## Sessions Endpoints
 
-- **POST /sessions**
+- **POST `/sessions`**
 
   - **Descrição**: Cria uma nova sessão.
 
-- **DELETE /sessions**
+- **DELETE `/sessions`**
   - **Descrição**: Encerra a sessão atual.
 
 ## Sales Endpoints
 
-- **GET /sales**
+- **GET `/sales`**
 
   - **Descrição**: Retorna uma lista de todas as vendas.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-- **GET /sales/:id**
+- **GET `/sales/:id`**
   - **Descrição**: Retorna os detalhes de uma venda específica pelo ID.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 ## Products Endpoints
 
-- **GET /products**
+- **GET `/products`**
 
   - **Descrição**: Retorna uma lista de todos os produtos.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-- **GET /products/:id**
+- **GET `/products/:id`**
 
   - **Descrição**: Retorna os detalhes de um produto específico pelo ID.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-- **POST /products**
+- **POST `/products`**
 
   - **Descrição**: Cria um novo produto.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-- **PUT /products/:id**
+- **PUT `/products/:id`**
 
   - **Descrição**: Atualiza um produto existente pelo ID.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-- **DELETE /products/:id**
+- **DELETE `/products/:id`**
 
   - **Descrição**: Remove um produto existente pelo ID.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
-- **PATCH /products/:id/image**
+- **PATCH `/products/image/:id`**
+
   - **Descrição**: Atualiza a imagem de um produto específico pelo ID.
+  - **Requer Autorização admin ou employee**
+  - **Requer Autenticação**
+
+- **POST `/products/image`**
+
+  - **Descrição**: Cria uma nova imagem de produto.
   - **Requer Autorização admin ou employee**
   - **Requer Autenticação**
 
 ## Orders Endpoints
 
-- **POST /orders**
+- **POST `/orders`**
 
   - **Descrição**: Cria um novo pedido.
   - **Requer Autenticação**
 
-- **GET /orders**
+- **GET `/orders`**
 
   - **Descrição**: Retorna uma lista de todos os pedidos.
   - **Requer Autenticação**
 
-- **GET /orders/:id**
+- **GET `/orders/:id`**
 
   - **Descrição**: Retorna os detalhes de um pedido específico pelo ID.
   - **Requer Autenticação**
 
-- **PATCH /orders/:id**
+- **PATCH `/orders/:id`**
 
   - **Descrição**: Atualiza o status de um pedido específico pelo ID.
   - **Requer Autenticação**
 
 ## Employees Endpoints
 
-- **POST /employees**
+- **POST `/employees`**
 
   - **Descrição**: Cria um novo funcionário.
   - **Requer Autorização admin**
   - **Requer Autenticação**
 
-- **GET /employees**
+- **GET `/employees`**
 
   - **Descrição**: Retorna uma lista de todos os funcionários.
   - **Requer Autorização admin**
   - **Requer Autenticação**
 
-- **GET /employees/:id**
+- **GET `/employees/:id`**
 
   - **Descrição**: Retorna os detalhes de um funcionário específico pelo ID.
   - **Requer Autorização admin**
   - **Requer Autenticação**
 
-- **PUT /employees/:id**
+- **PUT `/employees/:id`**
 
   - **Descrição**: Atualiza um funcionário existente pelo ID.
   - **Requer Autorização admin**
   - **Requer Autenticação**
 
-- **DELETE /employees/:id**
+- **DELETE `/employees/:id`**
   - **Descrição**: Remove um funcionário existente pelo ID.
   - **Requer Autorização admin**
   - **Requer Autenticação**
 
 ## Addresses Endpoints
 
-- **POST /addresses**
+- **POST `/addresses`**
 
   - **Descrição**: Cria um novo endereço.
   - **Requer Autenticação**
 
-- **GET /addresses**
+- **GET `/addresses`**
 
   - **Descrição**: Retorna uma lista de todos os endereços.
   - **Requer Autenticação**
 
-- **GET /addresses/:id**
+- **GET `/addresses/:id`**
 
   - **Descrição**: Retorna os detalhes de um endereço específico pelo ID.
   - **Requer Autenticação**
 
-- **PUT /addresses/:id**
+- **PUT `/addresses/:id`**
 
   - **Descrição**: Atualiza um endereço existente pelo ID.
   - **Requer Autenticação**
 
-- **DELETE /addresses/:id**
+- **DELETE `/addresses/:id`**
 
   - **Descrição**: Remove um endereço existente pelo ID.
   - **Requer Autenticação**
 
-- **PATCH /addresses/:id**
+- **PATCH `/addresses/:id`**
   - **Descrição**: Atualiza o status de seleção de um endereço específico pelo ID.
   - **Requer Autenticação**
 
 ## Cards Endpoints
 
-- **POST /cards**
+- **POST `/cards`**
 
   - **Descrição**: Cria um novo cartão.
   - **Requer Autenticação**
 
-- **GET /cards**
+- **GET `/cards`**
 
   - **Descrição**: Retorna uma lista de todos os cartões.
   - **Requer Autenticação**
 
-- **GET /cards/:id**
+- **GET `/cards/:id`**
 
   - **Descrição**: Retorna os detalhes de um cartão específico pelo ID.
   - **Requer Autenticação**
 
-- **PUT /cards/:id**
+- **PUT `/cards/:id`**
 
   - **Descrição**: Atualiza um cartão existente pelo ID.
   - **Requer Autenticação**
 
-- **DELETE /cards/:id**
+- **DELETE `/cards/:id`**
   - **Descrição**: Remove um cartão existente pelo ID.
   - **Requer Autenticação**
 
 ## Categories Endpoints
 
-- **GET /categories**
+- **GET `/categories`**
   - **Descrição**: Retorna uma lista de todas as categorias.
   - **Requer Autenticação**
 
 ## Feedbacks Endpoints
 
-- **POST /feedbacks**
+- **POST `/feedbacks`**
   - **Descrição**: Cria um novo feedback.
   - **Requer Autenticação**
 
 ## Favorites Endpoints
 
-- **POST /favorites**
+- **POST `/favorites`**
 
   - **Descrição**: Adiciona um item à lista de favoritos.
   - **Requer Autenticação**
 
-- **GET /favorites**
+- **GET `/favorites`**
 
   - **Descrição**: Retorna a lista de itens favoritos.
   - **Requer Autenticação**
 
-- **DELETE /favorites/:id**
+- **DELETE `/favorites/:id`**
   - **Descrição**: Remove um item da lista de favoritos pelo ID.
+  - **Requer Autenticação**
+
+## File Endpoints
+
+- **GET `/file/:nome-do-arquivo`**
+
+  - **Descrição**: Retorna a imagem do produto.
   - **Requer Autenticação**

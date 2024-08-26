@@ -16,8 +16,13 @@ productsRoutes.use(verifyUserAuthorization(["admin", "employee"]));
 productsRoutes.post("/", productsController.create);
 productsRoutes.put("/:id", productsController.update);
 productsRoutes.delete("/:id", productsController.delete);
+productsRoutes.post(
+  "/image",
+  uploadConfig.single("image"),
+  productsImageController.create
+);
 productsRoutes.patch(
-  "/:id/image",
+  "/image/:id",
   uploadConfig.single("image"),
   productsImageController.update
 );

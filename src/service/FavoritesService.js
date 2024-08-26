@@ -32,7 +32,18 @@ class FavoritesService {
   }
   async index(user_id) {
     const favorites = await this.favoritesRepository.findByUserId(user_id);
-    return favorites;
+    const productIds = favorites.map((favorite) => favorite.product_id);
+    const products = await this.productsRepository.findProductsByIdList(
+      productIds,
+      ["*"]
+    );
+    const favoritesWithProducts = favorites.map((favorite) => {
+      const favoriteProduct = products.find(
+        (product) => product.id == favorite.product_id
+      );
+      return { ...favorite, product: favoriteProduct };
+    });
+    return favoritesWithProducts;
   }
 }
 module.exports = FavoritesService;

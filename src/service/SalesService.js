@@ -1,8 +1,9 @@
 const AppError = require("../utils/AppError");
 class SalesService {
-  constructor(salesRepository, feedbacksRepository) {
+  constructor(salesRepository, addressesRepository, feedbacksRepository) {
     this.salesRepository = salesRepository;
     this.feedbacksRepository = feedbacksRepository;
+    this.addressesRepository = addressesRepository;
   }
   async index({ status, page }) {
     let orders;
@@ -44,9 +45,14 @@ class SalesService {
     const [feedback] = await this.feedbacksRepository.findByOrderIdList([
       order.id,
     ]);
+    const address = await this.addressesRepository.findById({
+      id: order.address_id,
+      user_id: order.user_id,
+    });
     const sales = await this.salesRepository.findByOrderIdList([order.id]);
     return {
       ...order,
+      address,
       rating: feedback?.rating,
       comment: feedback?.comment,
       products: sales,

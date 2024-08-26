@@ -12,10 +12,11 @@ const productsService = new ProductsService(
 );
 class ProductsController {
   async create(req, res) {
-    const { name, description, price, category, ingredients } = req.body;
+    const { name, description, image, price, category, ingredients } = req.body;
     await productsService.create({
       name,
       description,
+      image,
       price,
       category,
       ingredients,
